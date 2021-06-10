@@ -1,5 +1,4 @@
-def calc_profit(quantity,purchase,sell):
-    return quantity*(sell - purchase)
+from profit_calc import calc_profit
 
 if __name__ == '__main__':
     quantity = int(input("Enter the quantity of shares: "))
