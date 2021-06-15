@@ -1,4 +1,4 @@
-from profit_calc import calc_profit
+from stock_calc import calc_profit
 from menu import title
 import os
 
