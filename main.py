@@ -1,11 +1,11 @@
 from profit_calc import calc_profit
+from menu import title
+import os
 
 if __name__ == '__main__':
     n = None
-    print("\n")
-    print("----------------WELCOME TO YOUR PERSONAL STOCK ASSISTANT----------------")
-    print("\n")
     while(n != 0):
+        title()
         print("Choose from the following:")
         print("0. Exit")
         print("1. Stock Calculator")
@@ -16,5 +16,6 @@ if __name__ == '__main__':
         print("6. Show history")
         n = int(input("Enter the number of choice: "))
         print("\n")
+        os.system('clear')
         if n == 1:
             calc_profit()
