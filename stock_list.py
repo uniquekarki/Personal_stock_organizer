@@ -1,28 +1,26 @@
-import pandas as pd
 import os
+import datetime
+from menu import title
 
-def insert():
-    database_current = 'current.csv'
+def insert(con,cur):
     
-    if not os.path.isfile(database_current):
-        df = pd.DataFrame(columns=['Symbol','Quantity','Price'])
-        print('Creating Database For Your Stocks')
-    else:
-        df = pd.read_csv(database_current)
-    
-    data = {}
     while True:
+        title()
         sym = input("Enter the stock symbol or press 0 to exit: ")
         if sym == '0':
+            os.system('clear')
             break
         else:
-            data['Symbol'] = sym
-            data['Quantity'] = int(input('Enter the quantity of the stock: '))
-            data['Price'] = int(input('Enter the purchase price of the stock: '))
-            df = df.append(data, ignore_index = True)
-            df.to_csv(database_current, index = False)
+            Quantity = int(input('Enter the quantity of the stock: '))
+            Price = int(input('Enter the purchase price of the stock: '))
+            date_entry = input('Enter purchase date in YYYY-MM-DD format: ')
+            year, month, day = map(int, date_entry.split('-'))
+            Date = datetime.date(year, month, day)
+            cur.execute("INSERT INTO current VALUES (?,?,?,?)", (sym, Quantity, Price, Date))
+            con.commit()
+            os.system('clear')
 
-def remove():
-    database_history = 'history.csv'
+# def remove():
+#     database_history = 'history.csv'
 
         
