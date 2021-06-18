@@ -1,5 +1,5 @@
 from stock_calc import calc_profit
-from stock_list import insert
+from stock_list import insert, remove
 from menu import title
 import os
 import sqlite3
@@ -17,6 +17,7 @@ if __name__ == '__main__':
         print("4. Calculate your profit for a particular stock")
         print("5. Calculate your total profit for today")
         print("6. Show history")
+        print("7. Show Current")
         n = int(input("Enter the number of choice: "))
         print("\n")
         os.system('clear')
@@ -26,4 +27,9 @@ if __name__ == '__main__':
             con = sqlite3.connect('stock_database.db')
             cur = con.cursor()
             insert(con,cur)
+            con.close()
+        elif n == 3 :
+            con = sqlite3.connect('stock_database.db')
+            cur = con.cursor()
+            remove(con,cur)
             con.close()
