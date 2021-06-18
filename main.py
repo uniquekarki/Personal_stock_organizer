@@ -1,5 +1,6 @@
 from stock_calc import calc_profit
 from stock_list import insert, remove
+from profit import one_stock, all_stock
 from menu import title
 import os
 import sqlite3
@@ -32,4 +33,14 @@ if __name__ == '__main__':
             con = sqlite3.connect('stock_database.db')
             cur = con.cursor()
             remove(con,cur)
+            con.close()
+        elif n == 4:
+            con = sqlite3.connect('stock_database.db')
+            cur = con.cursor()
+            one_stock(con,cur)
+            con.close()
+        elif n ==5:
+            con = sqlite3.connect('stock_database.db')
+            cur = con.cursor()
+            all_stock(con,cur)
             con.close()
