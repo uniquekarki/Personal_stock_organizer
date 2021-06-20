@@ -1,5 +1,6 @@
 import os
 from menu import title
+from prettytable import PrettyTable
 
 def one_stock(con,cur):
     title()
@@ -38,11 +39,16 @@ def all_stock(con,cur):
         temp = int(input(f"Enter the current price of {sym[0]}: "))
         curVal.append(temp)
     profits = []
-    print("\nSYMBOL, QUANTITY, PRICE, CURRENT_VALUE, PROFIT")
+    x = PrettyTable()
+    x.field_names = ['SYMBOL', 'QUANTITY', 'PRICE', 'CURRENT_VALUE', 'PROFIT']
+    
+    # print("\nSYMBOL, QUANTITY, PRICE, CURRENT_VALUE, PROFIT")
     for i, (sym, quantity,price) in enumerate(iniSym_Price_quant):
         sp = (curVal[i] - price)*quantity
         profits.append(sp)
-        print(sym, quantity, price, curVal[i], sp)
+        # print(sym, quantity, price, curVal[i], sp)
+        x.add_row([sym, quantity, price, curVal[i], sp])
+    print(x)
     print("The total profit is ----> Rs.",sum(profits))
     _ = input("Press enter to continue...")
     os.system('clear')
