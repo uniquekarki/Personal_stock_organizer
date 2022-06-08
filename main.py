@@ -38,5 +38,5 @@ if __name__ == '__main__':
         elif n == 6:
             disp_current(con,cur)
         elif n == 7:
-            disp_current(con,cur)
+            disp_history(con,cur)
     con.close()
